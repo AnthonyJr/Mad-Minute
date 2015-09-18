@@ -46,7 +46,6 @@ public class LetsPlay extends ActionBarActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if (Integer.parseInt(s.toString()) == (topNumbersList[i]+botNumbersList[i])){
-                    Toast.makeText(LetsPlay.this, "correct", Toast.LENGTH_SHORT).show();
 
                     i++;
                     updateTextViews(topNumbersList[i], botNumbersList[i]);
@@ -54,13 +53,9 @@ public class LetsPlay extends ActionBarActivity {
                     etAnswer.setText("");
                     etAnswer.addTextChangedListener(this);
                     score++;
-                    tries++;
 
-                    if (tries == 10){
-                        Intent intent = new Intent(LetsPlay.this, Results.class);
-                        intent.putExtra("intvarname ", score);
-                        startActivity(intent);
-                    }
+
+
 
 
                 } else {
@@ -72,13 +67,18 @@ public class LetsPlay extends ActionBarActivity {
                     etAnswer.removeTextChangedListener(this);
                     etAnswer.setText("");
                     etAnswer.addTextChangedListener(this);
-                    if (i == 100){
 
-                    }
 
 
                 }
+                tries++;
+                if (tries == 10){
+                    Intent intent = new Intent(LetsPlay.this, Results.class);
+                    intent.putExtra(theScore, Integer.toString(score));
+                    startActivity(intent);
+                }
             }
+
         });
     }
 

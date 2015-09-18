@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class Results extends AppCompatActivity {
@@ -14,9 +15,10 @@ public class Results extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
         Intent intent = getIntent();
-        int score = intent.getIntExtra("intvarname", 0);
+        String results = intent.getStringExtra(LetsPlay.theScore);
 
-        Toast.makeText(this, "the score is " + score, Toast.LENGTH_LONG).show();
+        EditText resulteditText = (EditText)findViewById(R.id.myScore);
+        resulteditText.setText(results);
     }
 
     @Override
