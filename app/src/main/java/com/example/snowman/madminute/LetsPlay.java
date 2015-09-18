@@ -1,5 +1,6 @@
 package com.example.snowman.madminute;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -16,7 +17,7 @@ import java.util.Random;
 
 
 public class LetsPlay extends ActionBarActivity {
-
+    public final static String theScore = "LetsPlay.java";
     @Override
     protected void onStart() {
         super.onStart();
@@ -30,6 +31,7 @@ public class LetsPlay extends ActionBarActivity {
         etAnswer.addTextChangedListener(new TextWatcher() {
             int i =0;
             int score = 0;
+            int tries = 0;
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -52,6 +54,13 @@ public class LetsPlay extends ActionBarActivity {
                     etAnswer.setText("");
                     etAnswer.addTextChangedListener(this);
                     score++;
+                    tries++;
+
+                    if (tries == 10){
+                        Intent intent = new Intent(LetsPlay.this, Results.class);
+                        intent.putExtra("intvarname ", score);
+                        startActivity(intent);
+                    }
 
 
                 } else {

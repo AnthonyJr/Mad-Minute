@@ -19,7 +19,11 @@
         <activity
             android:name=".LetsPlay"
             android:label="@string/title_activity_lets_play"
-            android:windowSoftInputMode="stateVisible|adjustResize">
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+        </activity>
+        <activity
+            android:name=".Results"
+            android:label="@string/title_activity_results" >
         </activity>
     </application>
 
