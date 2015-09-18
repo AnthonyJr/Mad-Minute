@@ -13,11 +13,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
 import java.util.Random;
 
 
 public class LetsPlay extends ActionBarActivity {
+    Calendar timer = Calendar.getInstance();
+    public final int start = timer.get(Calendar.SECOND);
     public final static String theScore = "LetsPlay.java";
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -29,6 +33,7 @@ public class LetsPlay extends ActionBarActivity {
         ans[0] = updateTextViews(topNumbersList[0], botNumbersList[0]);
 
         etAnswer.addTextChangedListener(new TextWatcher() {
+            Calendar finish = Calendar.getInstance();
             int i =0;
             int score = 0;
             int tries = 0;
@@ -61,7 +66,6 @@ public class LetsPlay extends ActionBarActivity {
                 } else {
                     i++;
 
-                    Toast.makeText(LetsPlay.this, "incorrect", Toast.LENGTH_SHORT).show();
 
                     updateTextViews(topNumbersList[i], botNumbersList[i]);
                     etAnswer.removeTextChangedListener(this);
