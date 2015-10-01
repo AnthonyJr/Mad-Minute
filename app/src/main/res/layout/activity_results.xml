@@ -11,15 +11,113 @@
         android:layout_height="wrap_content"
         android:text="Your score is....."
         android:id="@+id/textView3"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="152dp"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        android:layout_centerHorizontal="true" />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/myScore"
-        android:layout_centerVertical="true"
+        android:textSize="40dp"
+        android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Try Again"
+        android:id="@+id/button"
+        android:onClick="restart"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="1st"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/myScore"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="38dp"
+        android:layout_marginStart="38dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="2nd"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/textView4"
+        android:layout_alignRight="@+id/textView4"
+        android:layout_alignEnd="@+id/textView4"
+        android:layout_marginTop="28dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="3rd"
+        android:id="@+id/textView6"
+        android:layout_below="@+id/textView5"
+        android:layout_alignLeft="@+id/textView5"
+        android:layout_alignStart="@+id/textView5"
+        android:layout_marginTop="29dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/firstPlace"
+        android:layout_alignTop="@+id/textView4"
+        android:layout_toRightOf="@+id/button"
+        android:layout_toEndOf="@+id/button" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/secondPlace"
+        android:layout_alignTop="@+id/textView5"
+        android:layout_alignLeft="@+id/firstPlace"
+        android:layout_alignStart="@+id/firstPlace" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/thirdPlace"
+        android:layout_alignBottom="@+id/textView6"
+        android:layout_alignLeft="@+id/secondPlace"
+        android:layout_alignStart="@+id/secondPlace" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/firstName"
+        android:layout_alignTop="@+id/firstPlace"
+        android:layout_alignLeft="@+id/myScore"
+        android:layout_alignStart="@+id/myScore" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/secondName"
+        android:layout_alignBottom="@+id/secondPlace"
+        android:layout_alignLeft="@+id/firstName"
+        android:layout_alignStart="@+id/firstName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/thirdName"
+        android:layout_alignTop="@+id/thirdPlace"
+        android:layout_alignLeft="@+id/secondName"
+        android:layout_alignStart="@+id/secondName" />
+
 </RelativeLayout>

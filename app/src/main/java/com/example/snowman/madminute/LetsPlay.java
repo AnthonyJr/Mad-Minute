@@ -1,6 +1,7 @@
 package com.example.snowman.madminute;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -15,13 +16,15 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class LetsPlay extends ActionBarActivity {
-    Calendar timer = Calendar.getInstance();
-    public final int start = timer.get(Calendar.SECOND);
+    public static final String PREFS = "Ariel&Anthony";
     public final static String theScore = "LetsPlay.java";
-
+    final int delay = 60000;
+    final int period = 60000;
     @Override
     protected void onStart() {
         super.onStart();
@@ -33,7 +36,6 @@ public class LetsPlay extends ActionBarActivity {
         ans[0] = updateTextViews(topNumbersList[0], botNumbersList[0]);
 
         etAnswer.addTextChangedListener(new TextWatcher() {
-            Calendar finish = Calendar.getInstance();
             int i =0;
             int score = 0;
             int tries = 0;
@@ -65,7 +67,7 @@ public class LetsPlay extends ActionBarActivity {
 
                 } else {
                     i++;
-
+                    tries++;
 
                     updateTextViews(topNumbersList[i], botNumbersList[i]);
                     etAnswer.removeTextChangedListener(this);
@@ -75,12 +77,19 @@ public class LetsPlay extends ActionBarActivity {
 
 
                 }
-                tries++;
-                if (tries == 10){
-                    Intent intent = new Intent(LetsPlay.this, Results.class);
-                    intent.putExtra(theScore, Integer.toString(score));
-                    startActivity(intent);
-                }
+
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    public void run() {
+                        SharedPreferences exPREFS = getSharedPreferences(PREFS, 0);
+                        SharedPreferences.Editor editor = exPREFS.edit();
+                        editor.putInt("userScore", score);
+                        editor.commit();
+
+                        Intent intent = new Intent(LetsPlay.this, Results.class);
+                        startActivity(intent);
+                    }
+                }, delay);
             }
 
         });

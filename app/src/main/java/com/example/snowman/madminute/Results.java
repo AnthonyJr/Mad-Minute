@@ -1,24 +1,34 @@
 package com.example.snowman.madminute;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 public class Results extends AppCompatActivity {
 
+    public static final String PREFS = "Ariel&Anthony";
+    public static final String firstOld = "1st";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
-        Intent intent = getIntent();
-        String results = intent.getStringExtra(LetsPlay.theScore);
 
-        EditText resulteditText = (EditText)findViewById(R.id.myScore);
-        resulteditText.setText(results);
+        SharedPreferences SP = getSharedPreferences(PREFS,0);
+        String myScore = SP.getString("userScore","Nothing Found");
+        TextView tvMyScore = (TextView)findViewById(R.id.myScore);
+        tvMyScore.setText(myScore);
+
     }
 
     @Override
@@ -41,5 +51,9 @@ public class Results extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void restart(View view){
+        Intent intent = new Intent(this,LetsPlay.class);
+        startActivity(intent);
     }
 }
