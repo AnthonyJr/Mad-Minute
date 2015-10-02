@@ -17,17 +17,36 @@ import java.io.FileOutputStream;
 
 public class Results extends AppCompatActivity {
 
-    public static final String PREFS = "Ariel&Anthony";
-    public static final String firstOld = "1st";
+
+    public static final String HighScore = "TIP";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
-        SharedPreferences SP = getSharedPreferences(PREFS,0);
-        String myScore = SP.getString("userScore","Nothing Found");
+        SharedPreferences sharePref = getSharedPreferences("TIP", 0);
+        SharedPreferences.Editor edit = sharePref.edit();
+
+
+
+        Intent intent = getIntent();
+        int myScore = intent.getIntExtra("Score", 0);
+
+        int highScore = sharePref.getInt("TIP", 0);
+
+        if (myScore > highScore){
+            edit.putInt("TIP",myScore);
+            edit.commit();
+        }
+
         TextView tvMyScore = (TextView)findViewById(R.id.myScore);
-        tvMyScore.setText(myScore);
+        tvMyScore.setText(Integer.toString(myScore));
+
+        TextView tvHighScore = (TextView)findViewById(R.id.firstPlace);
+        tvHighScore.setText(Integer.toString(highScore));
+
+
+
 
     }
 

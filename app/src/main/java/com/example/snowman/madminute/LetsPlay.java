@@ -24,7 +24,6 @@ public class LetsPlay extends ActionBarActivity {
     public static final String PREFS = "Ariel&Anthony";
     public final static String theScore = "LetsPlay.java";
     final int delay = 60000;
-    final int period = 60000;
     @Override
     protected void onStart() {
         super.onStart();
@@ -81,12 +80,8 @@ public class LetsPlay extends ActionBarActivity {
                 Timer timer = new Timer();
                 timer.schedule(new TimerTask() {
                     public void run() {
-                        SharedPreferences exPREFS = getSharedPreferences(PREFS, 0);
-                        SharedPreferences.Editor editor = exPREFS.edit();
-                        editor.putInt("userScore", score);
-                        editor.commit();
-
                         Intent intent = new Intent(LetsPlay.this, Results.class);
+                        intent.putExtra("Score", score);
                         startActivity(intent);
                     }
                 }, delay);
